@@ -52,13 +52,45 @@ class ProductoDisplayWidget extends StatelessWidget{
                 ],
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: CachedNetworkImage(imageUrl:
                     productList.productUrl,
-                    fit: BoxFit.cover,),
+                    fit: BoxFit.cover,
+                    ),
                   ),
+                   Padding(
+                      padding: const EdgeInsets.only(
+                        left: 8.0,
+                        right: 8.0,
+                        top: 10.0,
+                      ),
+                    child: Text(
+                      productList.productName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.only(left: 8.0,right: 8.0),
+                  child: Row(
+                    children: [
+                      Text("\€${productList.currentPrice}"),
+                      SizedBox(width: 5,),
+                      Text("\€${productList.oldPrice}",
+                      style: const TextStyle(
+                        color: kGreyColor,
+                        decoration: TextDecoration.lineThrough,
+                        decorationColor: kRedColor,
+
+                      ),
+                      ),
+                    ],
+
+                  ),),
+
 
                 ],
               ),
