@@ -50,6 +50,7 @@ class _CategoryDisplayScreenState extends State<CategoryDisplayScreen> {
                               Text(FireBaseAdmin.productList[index].productName,
                               style:  const TextStyle(color: kWihte,fontSize: 18,fontWeight:FontWeight.bold),
                               ),
+                              const SizedBox(height: 10),
                               Text("${FireBaseAdmin.productList.length} Products"),//hay que hacer un grupby de cada categoria
 
                             ],
