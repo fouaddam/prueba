@@ -30,6 +30,7 @@ class _ListProductViewState extends State<ListProductView> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      backgroundColor: kGreyColor,
       body: SafeArea(
         bottom: false,
         child: Stack(
@@ -77,13 +78,8 @@ class _ListProductViewState extends State<ListProductView> {
             ),
             )
           ],
-          
-          
 
         ),
-
-
-
 
       ),
     );
