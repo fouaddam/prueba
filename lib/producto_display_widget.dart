@@ -1,17 +1,19 @@
 
 
 
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:prubas_home/firebase_admine.dart';
 import 'package:prubas_home/product.dart';
-
 import 'colors_personalizados.dart';
 
 class ProductoDisplayWidget extends StatelessWidget{
   const ProductoDisplayWidget({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,8 @@ class ProductoDisplayWidget extends StatelessWidget{
           return singleItemWiget(
               FireBaseAdmin.productList[index],
               index==FireBaseAdmin.productList.length -1? true:false,
+              context,
+
           );
         },
 
@@ -33,7 +37,7 @@ class ProductoDisplayWidget extends StatelessWidget{
 
   }
 
-  Widget singleItemWiget(Product productList, bool bool) {
+  Widget singleItemWiget(Product productList, bool lastItem,BuildContext context) {
 
     return Column(
       children: [
@@ -108,7 +112,8 @@ class ProductoDisplayWidget extends StatelessWidget{
                   ),
                   alignment: Alignment.center,
                   child: Icon(
-                    productList.isLiked==true?FontAwesomeIcons.solidHeart:FontAwesomeIcons.heart,
+                    productList.isLiked==true?
+                    FontAwesomeIcons.solidHeart:FontAwesomeIcons.heart,
                     size: 15,
                       color: kWihte
                     ,
@@ -117,6 +122,11 @@ class ProductoDisplayWidget extends StatelessWidget{
             ),
 
           ],
+        ),
+        SizedBox(
+          height:
+            lastItem==true ?MediaQuery.of(context).size.height*0.50:0,
+
         ),
       ],
     );
