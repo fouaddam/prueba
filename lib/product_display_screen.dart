@@ -62,7 +62,7 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                         color: selectedValue==1?
-                        kBackgournd:kOrangeColor,
+                        kBackgournd:kRedColor,
                         boxShadow: selectedValue==0
                             ? [ const BoxShadow(
                             color: kBackgournd,
@@ -82,7 +82,7 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: selectedValue==0?
-                        kBackgournd:kOrangeColor,
+                        kBackgournd:kRedColor,
                         boxShadow: selectedValue==1
                         ? [ const BoxShadow(
                                 color: kBackgournd,

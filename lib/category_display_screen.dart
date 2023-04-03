@@ -15,6 +15,8 @@ class CategoryDisplayScreen extends StatefulWidget{
 }
 
 class _CategoryDisplayScreenState extends State<CategoryDisplayScreen> {
+
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -26,6 +28,7 @@ class _CategoryDisplayScreenState extends State<CategoryDisplayScreen> {
             const TopContainer(title: "Category", searchBar: "serche category"),
             ListView.builder(
                 scrollDirection: Axis.vertical,
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: FireBaseAdmin.productList.length,//hay que crear una lista de categorias
                 itemBuilder: (context,index){
@@ -59,8 +62,11 @@ class _CategoryDisplayScreenState extends State<CategoryDisplayScreen> {
                       ],
                     ),
 
+
                   );
-                }),
+
+                },
+                ),
           ],
 
         ),

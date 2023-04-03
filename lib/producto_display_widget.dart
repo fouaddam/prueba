@@ -1,7 +1,4 @@
 
-
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -124,7 +121,6 @@ class ProductoDisplayWidget extends StatelessWidget{
         SizedBox(
           height:
             lastItem==true ?MediaQuery.of(context).size.height*0.50:0,
-
         ),
       ],
     );

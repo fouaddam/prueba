@@ -30,6 +30,7 @@ class _ImageListViewState extends State<ImageListView> {
     _scroller.addListener(() {
       if(_scroller.position.atEdge){
             _autoScroller();
+
       }
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         _autoScroller();
@@ -38,13 +39,15 @@ class _ImageListViewState extends State<ImageListView> {
   }
 
   void _autoScroller(){
-    final currentScrollerPosition=_scroller.offset;
+    var currentScrollerPosition=_scroller.offset;
     final endScrollerPosition=_scroller.position.maxScrollExtent;
     const duration= Duration(seconds: 10);
 
+
     scheduleMicrotask(() {
       _scroller.animateTo(
-          currentScrollerPosition==endScrollerPosition?0:endScrollerPosition,
+          currentScrollerPosition==endScrollerPosition?
+          0:endScrollerPosition,
           duration: duration, curve: Curves.linear);
     });
 
