@@ -4,6 +4,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:prubas_home/firebase_admine.dart';
 import 'package:prubas_home/product.dart';
 
@@ -78,25 +79,45 @@ class ProductoDisplayWidget extends StatelessWidget{
                   child: Row(
                     children: [
                       Text("\€${productList.currentPrice}"),
-                      SizedBox(width: 5,),
+                      const SizedBox(width: 10,),
                       Text("\€${productList.oldPrice}",
                       style: const TextStyle(
                         color: kGreyColor,
                         decoration: TextDecoration.lineThrough,
                         decorationColor: kRedColor,
+                        decorationThickness: 2
 
                       ),
                       ),
                     ],
 
-                  ),),
-
-
+                  ),
+                  ),
                 ],
               ),
-            )
+            ),
+            Positioned(
+                right: 5,
+                top: 10,
+                child: Container(
+                 height: 30,
+                 width: 30,
+                  decoration: const BoxDecoration(
+                    color: kBackgournd,
+                    shape: BoxShape.circle
+                  ),
+                  alignment: Alignment.center,
+                  child: Icon(
+                    productList.isLiked==true?FontAwesomeIcons.solidHeart:FontAwesomeIcons.heart,
+                    size: 15,
+                      color: kWihte
+                    ,
+                  ),
+                ),
+            ),
+
           ],
-        )
+        ),
       ],
     );
 
