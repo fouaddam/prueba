@@ -51,17 +51,36 @@ class _HomeState extends State<Home> {
             top: MediaQuery
                 .of(context)
                 .size
-                .height * 0.06,
-            child: const Text("title---",
-                textAlign: TextAlign.center,
-                style: kTitleStyle),
+                .height * 0.11,
+            child:Container(
+              decoration: BoxDecoration(
+                color: Colors.white60,
+                borderRadius: BorderRadius.circular(10)
+              ),
+              child: Text("Vrizze",
+                  textAlign: TextAlign.center,
+                  style: kTitleStyle.copyWith(
+                      color: kRedColor,
+                      fontSize: 60,
+                      shadows:[
+                        Shadow(
+                          color: Colors.blue.shade900.withOpacity(0.8),
+                          offset: const Offset(7, 3),
+                          blurRadius: 8,
+                        ),
+                      ] ),
+              ),
+
+            )
+
+
           ),
 
           Positioned(
               bottom: 0,
               child: Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height*0.75,
+                  height: MediaQuery.of(context).size.height*0.8,
 
                 decoration:  const BoxDecoration(
                   gradient: LinearGradient(
@@ -93,7 +112,7 @@ class _HomeState extends State<Home> {
 
                     TextButton(
                     style: flatButtonStyle,
-                    onPressed: () {//poner en las constatntes de routas
+                    onPressed: () {//poner en las constatntes de rutas
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => const ListProductView()),
