@@ -130,7 +130,7 @@ class _IntroScreenState extends State<IntroScreen> {
                           );
                         },
                         child: const Text(
-                          "          Sing In",
+                          "           Sing In",
                           style: TextStyle(
                             color: Colors.black12,
                           ),

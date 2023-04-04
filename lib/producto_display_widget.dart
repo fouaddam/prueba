@@ -8,7 +8,12 @@ import 'package:prubas_home/classes/product.dart';
 import 'styles/colors_personalizados.dart';
 
 class ProductoDisplayWidget extends StatelessWidget{
-  const ProductoDisplayWidget({super.key});
+
+  final bool gender;
+  const ProductoDisplayWidget({super.key, required this.gender});
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +22,12 @@ class ProductoDisplayWidget extends StatelessWidget{
         padding: const EdgeInsets.symmetric(vertical: 10.0),
         crossAxisSpacing: 15,
         crossAxisCount: 2,
-        itemCount: FireBaseAdmin.productList.length,
+        itemCount: gender?FireBaseAdmin.productListW.length:FireBaseAdmin.productListM.length,
         mainAxisSpacing: 10,
         itemBuilder: (context,index){
           return singleItemWiget(
-              FireBaseAdmin.productList[index],
-              index==FireBaseAdmin.productList.length -1? true:false,
+              gender?FireBaseAdmin.productListW[index]:FireBaseAdmin.productListM[index],
+              index==FireBaseAdmin.productListW.length -1? true:false,
               context,
 
           );

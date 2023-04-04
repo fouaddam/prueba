@@ -5,10 +5,11 @@ class Product {
   late  String currentPrice;
   late  String oldPrice;
   late bool isLiked;
+  late bool isMan;
 
 
   Product(this.productName, this.productUrl, this.currentPrice, this.oldPrice,
-      this.isLiked);
+      this.isLiked,this.isMan);
 
 
 

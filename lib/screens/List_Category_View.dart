@@ -51,7 +51,7 @@ class _ListCategoryViewState extends State<ListCategoryView> {
                             bottom: 10,
                             child: Column(
                             children: [
-                              Text(FireBaseAdmin.productList[index].productName,
+                              Text(FireBaseAdmin.productListW[index].productName,
                               style:  const TextStyle(color: kWihte,fontSize: 18,fontWeight:FontWeight.bold),
                               ),
                               const SizedBox(height: 10),

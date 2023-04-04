@@ -72,7 +72,7 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
                         )
                         ]:null,
                       ),
-                      child:  Text("Text1",style: kTextStyle.copyWith(fontSize: 20,color: kWihte),),
+                      child:  Text("Hombre",style: kTextStyle.copyWith(fontSize: 20,color: kWihte),),
                     ),
 
                     Container(
@@ -92,7 +92,7 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
                               )
                         ]:null,
                       ),
-                      child:  Text("Text2",style: kTextStyle.copyWith(fontSize: 20,color: kWihte),
+                      child:  Text("Hombre",style: kTextStyle.copyWith(fontSize: 20,color: kWihte),
                       ),
                     ),
                   ],
@@ -104,8 +104,8 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
                   physics: const NeverScrollableScrollPhysics(),
                   controller: tabController,
                   children: const [
-                    ProductoDisplayWidget(),
-                    ProductoDisplayWidget()
+                    ProductoDisplayWidget(gender:false),
+                    ProductoDisplayWidget(gender:true)
 
                   ],
 
