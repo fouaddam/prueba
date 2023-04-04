@@ -22,7 +22,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin{
 
     _controller.addStatusListener((status) async{
       if(status==AnimationStatus.completed){
-        Navigator.pop(
+        Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const ListProductView()),
         );
@@ -45,21 +45,22 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: ListView(
-        children: [
-          Lottie.asset(
-            'assets/Splash.json',
-            controller: _controller,
-            onLoaded: (composition) {
-              // Configure the AnimationController with the duration of the
-              // Lottie file and start the animation.
-              _controller
-                ..duration = composition.duration
-                ..forward();
-            },
-          ),
+      body: Center(
 
-        ],
+        child: Container(
+           child: Lottie.asset(
+              'assets/Splash.json',
+              controller: _controller,
+              onLoaded: (composition) {
+                // Configure the AnimationController with the duration of the
+                // Lottie file and start the animation.
+                _controller
+                  ..duration = composition.duration
+                  ..forward();
+              },
+            ),
+
+        ),
       ),
     );
   }

@@ -1,11 +1,12 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:prubas_home/screens/List_Product_View.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
 import 'package:prubas_home/widget/image_list_view.dart';
 import 'package:prubas_home/styles/text_style.dart';
+import 'package:flutter_swipe_button/flutter_swipe_button.dart';
 
+import 'List_Product_View.dart';
 import 'splash.dart';
 
 class IntroScreen extends StatefulWidget{
@@ -100,6 +101,7 @@ class _IntroScreenState extends State<IntroScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:  [
+                    const SizedBox(height: 100,),
                     const Text("text-text \n text-text-text",
                     style: kTextStyle,
                         textAlign: TextAlign.center),
@@ -112,18 +114,29 @@ class _IntroScreenState extends State<IntroScreen> {
 
                     const SizedBox(height: 30,),
 
-                RawMaterialButton(
-                  onPressed: () {},
-                  shape: const CircleBorder(),
-                  elevation: 2.0,
-                  fillColor: Colors.white,
-                  padding: const EdgeInsets.all(15.0),
-                  child: const Icon(
-                    Icons.pause,
-                    color: Colors.blue,
-                    size: 35.0,
-                  ),
-                ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 150.0,right: 150.0),
+                      child: SwipeButton.expand(
+                        thumb: const Icon(
+                          Icons.double_arrow_rounded,
+                          color: Colors.white,
+                        ),
+                        activeThumbColor: kBackgournd,
+                        activeTrackColor: Colors.grey.shade300,
+                        onSwipe: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const Splash()),
+                          );
+                        },
+                        child: const Text(
+                          "          Sing In",
+                          style: TextStyle(
+                            color: Colors.black12,
+                          ),
+                        ),
+                      ),
+                    )
         ],
                 ),
               ),
