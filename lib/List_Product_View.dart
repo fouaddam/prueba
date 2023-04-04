@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:prubas_home/category_display_screen.dart';
-import 'package:prubas_home/colors_personalizados.dart';
+import 'package:prubas_home/styles/colors_personalizados.dart';
 import 'package:prubas_home/product_display_screen.dart';
 
 class ListProductView extends StatefulWidget{

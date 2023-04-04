@@ -6,7 +6,7 @@ import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'firebase_admine.dart';
+import '../firebase_admin/firebase_admine.dart';
 
 class ImageListView extends StatefulWidget{
 
@@ -61,11 +61,11 @@ class _ImageListViewState extends State<ImageListView> {
       child: SizedBox(
 
         width: MediaQuery.of(context).size.width*0.4,
-        height: MediaQuery.of(context).size.width*0.8,
+        height: MediaQuery.of(context).size.height*0.8,
 
           child: ListView.builder(
             controller: _scroller,
-            itemCount :5,
+            itemCount :5,//hay que dejarlo fijo??
             scrollDirection: Axis.vertical,
             itemBuilder: (context,index){
             return CachedNetworkImage(

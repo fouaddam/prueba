@@ -3,9 +3,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:prubas_home/colors_personalizados.dart';
-import 'package:prubas_home/firebase_admine.dart';
-import 'package:prubas_home/top_container.dart';
+import 'package:prubas_home/styles/colors_personalizados.dart';
+import 'package:prubas_home/firebase_admin/firebase_admine.dart';
+import 'package:prubas_home/costum_view/top_container.dart';
 
 class CategoryDisplayScreen extends StatefulWidget{
   const CategoryDisplayScreen({super.key});
@@ -30,7 +30,7 @@ class _CategoryDisplayScreenState extends State<CategoryDisplayScreen> {
                 scrollDirection: Axis.vertical,
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: FireBaseAdmin.productList.length,//hay que crear una lista de categorias
+                itemCount: FireBaseAdmin.categoryList.length,//hay que crear una lista de categorias
                 itemBuilder: (context,index){
                   return Container(
                     width: MediaQuery.of(context).size.width*0.80,

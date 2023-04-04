@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'Exaple2.dart';
-import 'home.dart';
+import 'screens/IntroScreen.dart';
 
 void main() {
   runApp(const MyApp());

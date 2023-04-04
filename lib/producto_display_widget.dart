@@ -3,9 +3,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:prubas_home/firebase_admine.dart';
-import 'package:prubas_home/product.dart';
-import 'colors_personalizados.dart';
+import 'package:prubas_home/firebase_admin/firebase_admine.dart';
+import 'package:prubas_home/classes/product.dart';
+import 'styles/colors_personalizados.dart';
 
 class ProductoDisplayWidget extends StatelessWidget{
   const ProductoDisplayWidget({super.key});
