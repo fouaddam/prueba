@@ -1,19 +1,21 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:prubas_home/List_Product_View.dart';
+import 'package:prubas_home/views/List_Product_View.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
 import 'package:prubas_home/widget/image_list_view.dart';
 import 'package:prubas_home/styles/text_style.dart';
 
-class Home extends StatefulWidget{
-  const Home({super.key});
+import '../splash.dart';
+
+class IntroScreen extends StatefulWidget{
+  const IntroScreen({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<IntroScreen> createState() => _IntroScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _IntroScreenState extends State<IntroScreen> {
 
   //hay que moverlo a button style
   final ButtonStyle flatButtonStyle = TextButton.styleFrom(
@@ -115,7 +117,7 @@ class _HomeState extends State<Home> {
                     onPressed: () {//poner en las constatntes de rutas
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const ListProductView()),
+                        MaterialPageRoute(builder: (context) => const Splash()),
                       );
                     },
                     child: const Text('Sing In'),
