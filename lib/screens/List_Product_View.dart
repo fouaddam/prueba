@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:prubas_home/category_display_screen.dart';
+import 'package:prubas_home/screens/List_Category_View.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
 import 'package:prubas_home/product_display_screen.dart';
 
@@ -45,7 +45,7 @@ class _ListProductViewState extends State<ListProductView> {
 
               children: const [
                 ProductDisplayScreen(),
-                CategoryDisplayScreen()
+                ListCategoryView()
               ],
             ),
             

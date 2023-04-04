@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:prubas_home/screens/List_Product_View.dart';
 
 class Splash extends StatefulWidget{
   const Splash({super.key});
@@ -18,13 +19,28 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin{
   void initState() {
     super.initState();
     _controller = AnimationController(vsync: this);
+
+    _controller.addStatusListener((status) async{
+      if(status==AnimationStatus.completed){
+        Navigator.pop(
+          context,
+          MaterialPageRoute(builder: (context) => const ListProductView()),
+        );
+        _controller.reset();
+      }
+
+    });
   }
 
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
+    _controller.dispose();
+
   }
+
+
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

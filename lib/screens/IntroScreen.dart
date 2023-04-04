@@ -1,12 +1,12 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:prubas_home/views/List_Product_View.dart';
+import 'package:prubas_home/screens/List_Product_View.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
 import 'package:prubas_home/widget/image_list_view.dart';
 import 'package:prubas_home/styles/text_style.dart';
 
-import '../splash.dart';
+import 'splash.dart';
 
 class IntroScreen extends StatefulWidget{
   const IntroScreen({super.key});
