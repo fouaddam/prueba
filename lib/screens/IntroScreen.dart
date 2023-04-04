@@ -112,16 +112,18 @@ class _IntroScreenState extends State<IntroScreen> {
 
                     const SizedBox(height: 30,),
 
-                    TextButton(
-                    style: flatButtonStyle,
-                    onPressed: () {//poner en las constatntes de rutas
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const Splash()),
-                      );
-                    },
-                    child: const Text('Sing In'),
+                RawMaterialButton(
+                  onPressed: () {},
+                  shape: const CircleBorder(),
+                  elevation: 2.0,
+                  fillColor: Colors.white,
+                  padding: const EdgeInsets.all(15.0),
+                  child: const Icon(
+                    Icons.pause,
+                    color: Colors.blue,
+                    size: 35.0,
                   ),
+                ),
         ],
                 ),
               ),
