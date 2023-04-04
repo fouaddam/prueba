@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:prubas_home/List_Product_View.dart';
 import 'package:prubas_home/colors_personalizados.dart';
 import 'package:prubas_home/image_list_view.dart';
-import 'package:prubas_home/text_style.dart';
+import 'package:prubas_home/styles/text_style.dart';
 
 class Home extends StatefulWidget{
   const Home({super.key});
@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
   final ButtonStyle flatButtonStyle = TextButton.styleFrom(
     primary: Colors.black87,
     minimumSize: Size(88, 36),
-    padding: EdgeInsets.symmetric(horizontal: 16.0),
+    padding: const EdgeInsets.symmetric(horizontal: 16.0),
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(2.0)),
     ),

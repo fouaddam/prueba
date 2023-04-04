@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:prubas_home/colors_personalizados.dart';
-import 'package:prubas_home/text_style.dart';
+import 'package:prubas_home/styles/text_style.dart';
 
 class TopContainer extends StatelessWidget{
 

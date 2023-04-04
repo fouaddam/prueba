@@ -3,7 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'colors_personalizados.dart';
+import '../colors_personalizados.dart';
 
     const kTitleStyle=TextStyle(
       fontSize: 30,

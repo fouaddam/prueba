@@ -40,9 +40,10 @@ class _CategoryDisplayScreenState extends State<CategoryDisplayScreen> {
                     ),
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: CachedNetworkImageProvider(FireBaseAdmin.productList[index].productUrl)
+                        image: CachedNetworkImageProvider(FireBaseAdmin.categoryList[index].urlImage)
                       ,fit: BoxFit.cover)
                     ),
+
                     child: Stack(
                       children: [
                         Positioned(
@@ -54,16 +55,17 @@ class _CategoryDisplayScreenState extends State<CategoryDisplayScreen> {
                               style:  const TextStyle(color: kWihte,fontSize: 18,fontWeight:FontWeight.bold),
                               ),
                               const SizedBox(height: 10),
-                              Text("${FireBaseAdmin.productList.length} Products"),//hay que hacer un grupby de cada categoria
+                              Text("${FireBaseAdmin.categoryList[index].productoCount} Products"),//hay que hacer un grupby de cada categoria
 
                             ],
                           ),
                         ),
+
                       ],
                     ),
 
-
                   );
+
 
                 },
                 ),
