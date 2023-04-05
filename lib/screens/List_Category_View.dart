@@ -7,14 +7,14 @@ import 'package:prubas_home/styles/colors_personalizados.dart';
 import 'package:prubas_home/firebase_admin/firebase_admine.dart';
 import 'package:prubas_home/costum_view/top_container.dart';
 
-class ListCategoryView extends StatefulWidget{
-  const ListCategoryView({super.key});
+class CategoryDisplayScreen extends StatefulWidget{
+  const CategoryDisplayScreen({super.key});
 
   @override
-  State<ListCategoryView> createState() => _ListCategoryViewState();
+  State<CategoryDisplayScreen> createState() => _CategoryDisplayScreenState();
 }
 
-class _ListCategoryViewState extends State<ListCategoryView> {
+class _CategoryDisplayScreenState extends State<CategoryDisplayScreen> {
 
 
   @override

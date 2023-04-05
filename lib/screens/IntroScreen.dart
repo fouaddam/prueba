@@ -6,7 +6,7 @@ import 'package:prubas_home/widget/image_list_view.dart';
 import 'package:prubas_home/styles/text_style.dart';
 import 'package:flutter_swipe_button/flutter_swipe_button.dart';
 
-import 'List_Product_View.dart';
+import 'home.dart';
 import 'splash.dart';
 
 class IntroScreen extends StatefulWidget{

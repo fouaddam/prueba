@@ -92,7 +92,7 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
                               )
                         ]:null,
                       ),
-                      child:  Text("Hombre",style: kTextStyle.copyWith(fontSize: 20,color: kWihte),
+                      child:  Text("Mujer",style: kTextStyle.copyWith(fontSize: 20,color: kWihte),
                       ),
                     ),
                   ],

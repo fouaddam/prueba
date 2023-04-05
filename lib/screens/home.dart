@@ -6,14 +6,14 @@ import 'package:prubas_home/screens/List_Category_View.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
 import 'package:prubas_home/product_display_screen.dart';
 
-class ListProductView extends StatefulWidget{
-  const ListProductView({super.key});
+class Home extends StatefulWidget{
+  const Home({super.key});
 
   @override
-  State<ListProductView> createState() => _ListProductViewState();
+  State<Home> createState() => _HomeState();
 }
 
-class _ListProductViewState extends State<ListProductView> {
+class _HomeState extends State<Home> {
 
   int currentIndex=0;
   final pageControiller=PageController(initialPage: 0);
@@ -45,7 +45,7 @@ class _ListProductViewState extends State<ListProductView> {
 
               children: const [
                 ProductDisplayScreen(),
-                ListCategoryView()
+                CategoryDisplayScreen()
               ],
             ),
             
