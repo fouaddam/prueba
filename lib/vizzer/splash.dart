@@ -2,7 +2,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:prubas_home/screens/home.dart';
+
+import 'home.dart';
+
 
 class Splash extends StatefulWidget{
   const Splash({super.key});

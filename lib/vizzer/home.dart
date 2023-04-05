@@ -2,9 +2,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:prubas_home/screens/List_Category_View.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
-import 'package:prubas_home/product_display_screen.dart';
+import 'package:prubas_home/vizzer/screen/category_display_screen.dart';
+import 'package:prubas_home/vizzer/screen/product_display_screen.dart';
+
 
 class Home extends StatefulWidget{
   const Home({super.key});
@@ -15,7 +16,10 @@ class Home extends StatefulWidget{
 
 class _HomeState extends State<Home> {
 
-  int currentIndex=0;
+  int currentIndex=0;//screens
+  int currentIndexBar=0;//bar
+  Color colorICon=kRedColor;
+
   final pageControiller=PageController(initialPage: 0);
 
   //iconos
@@ -23,8 +27,16 @@ class _HomeState extends State<Home> {
     FontAwesomeIcons.house,
     FontAwesomeIcons.compass,
     FontAwesomeIcons.cartShopping,
-    FontAwesomeIcons.user
+    FontAwesomeIcons.user,
   ];
+
+  final tabBarIconosPressed=[
+    FontAwesomeIcons.airbnb,
+    FontAwesomeIcons.compass,
+    FontAwesomeIcons.cartShopping,
+    FontAwesomeIcons.user,
+  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +69,7 @@ class _HomeState extends State<Home> {
                   alignment: Alignment.center,
                   height: 70,
                   decoration: BoxDecoration(
-                    color: kBackgournd,
+                    color: Colors.black38,
                     borderRadius: BorderRadius.circular(40.0)
                   ),
                   child: Row(
@@ -65,10 +77,12 @@ class _HomeState extends State<Home> {
                     children: [
                       ...tabBarIconos.map((icono) => IconButton(onPressed: (){
                         icono==FontAwesomeIcons.house?
-                            pageControiller.jumpTo(0):
-                            pageControiller.jumpTo(1);
+                        colorICon=Colors.limeAccent:
+                        icono=tabBarIconosPressed.first;
 
-                      }, icon: Icon(icono,color: kWihte,size: 22,)
+
+                      },
+                          icon: Icon(icono,color: kBackgournd,size: 22,)
                       )
                       ),
 

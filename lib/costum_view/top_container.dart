@@ -35,7 +35,7 @@ class TopContainer extends StatelessWidget{
               ),
               child: Stack(
                 children: [
-                  Icon(FontAwesomeIcons.bell,color:kBackgournd,size: 20,),
+                  const Icon(FontAwesomeIcons.bell,color:kBackgournd,size: 20,),
                   Positioned(
                     right: 0,
                       child: Container(
@@ -43,7 +43,7 @@ class TopContainer extends StatelessWidget{
                         width: 8,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
-                          color:Colors.limeAccent
+                          color:Colors.red
                         ),
 
                      ),
@@ -57,19 +57,33 @@ class TopContainer extends StatelessWidget{
         ),
 
         Container(
-          margin: const EdgeInsets.symmetric(vertical: 30),
-          padding: const EdgeInsets.all(15),
+          margin: const EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: kGreyColor,
             borderRadius: BorderRadius.circular(30.0)
           ),
           child:  Row(
-            children: [
-               const Icon(
-                FontAwesomeIcons.magnifyingGlass,
-                size: 20,
+            children:  [
+              const Spacer(),
+               const Padding(
+                 padding: EdgeInsets.all(8.0),
+                 child: Icon(
+                  FontAwesomeIcons.magnifyingGlass,
+                  size: 20,
               ),
-              Text(searchBar,style: const TextStyle(color: kBackgournd),)
+               ),
+
+               SizedBox(
+                 width: 180,
+                 height: 30,
+                 child: TextField(
+                 decoration: InputDecoration(
+                   border: const OutlineInputBorder(),
+                   labelText: searchBar,
+                 ),
+                ),
+               ),
 
             ],
           ),

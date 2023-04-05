@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:prubas_home/vizzer/IntroScreen.dart';
 
-import 'Exaple2.dart';
-import 'screens/IntroScreen.dart';
+
+
 
 void main() {
   runApp(const MyApp());
