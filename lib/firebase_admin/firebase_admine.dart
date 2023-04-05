@@ -20,7 +20,14 @@ class FireBaseAdmin{
   static final productListM=[
 
    // Product("fashion5", "https://img.freepik.com/foto-gratis/mujer-joven-traje-pie-junto-moto_1303-11931.jpg?w=740&t=st=1680510553~exp=1680511153~hmac=483ab9b571a74d10f82880a36197ea9b66501807c8d6ad673fa9141e21c4f58f", "100", "50", false,false),
-    Product("fashin6", "https://img.freepik.com/foto-gratis/retrato-guapo-sonriente-elegante-joven-modelo-vestido-ropa-jeans-hombre-moda_158538-5030.jpg?size=626&ext=jpg&ga=GA1.2.2116152422.1665748315&semt=ais", "20", "200", true, true)
+    Product("fashin6", "https://img.freepik.com/foto-gratis/retrato-guapo-sonriente-elegante-joven-modelo-vestido-ropa-jeans-hombre-moda_158538-5030.jpg?size=626&ext=jpg&ga=GA1.2.2116152422.1665748315&semt=ais", "20", "200", true, true),
+    Product("fashion7", "https://st2.depositphotos.com/2056297/7883/i/600/depositphotos_78837264-stock-photo-sexy-model-in-aviator-sunglasses.jpg", "30", "50", false, true),
+    Product("fashion8", "https://img.freepik.com/foto-gratis/hombre-moda-joven-sentado-rectangulo-blanco_329181-1463.jpg?size=626&ext=jpg&ga=GA1.2.919045402.1680694930&semt=ais", "30", "50", false, true),
+    Product("fashion9", "https://img.freepik.com/foto-gratis/retrato-guapo-modelo-lambersexual-hipster-estilo-seguro-hombre-vestido-chaqueta-negra-jeans-hombre-moda-posando-estudio-cerca-pared-gris_158538-24009.jpg?size=626&ext=jpg", "30", "50", false, true),
+    Product("fashion10", "https://img.freepik.com/foto-gratis/retrato-guapo-modelo-lambersexual-estilo-hipster-peinado-rizado-hombre-sexy-vestido-jeans-camiseta-blanca-hombre-moda-aislado-pared-azul-estudio_158538-26572.jpg?size=626&ext=jpg&ga=GA1.2.919045402.1680694930&semt=ais", "30", "50", false, true),
+    Product("fashion11", "https://img.freepik.com/fotos-premium/hombre-barbudo-camiseta-blanca_53876-151733.jpg?size=626&ext=jpg&ga=GA1.2.919045402.1680694930&semt=ais", "30", "50", false, true),
+
+
   ];
 
 
