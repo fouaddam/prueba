@@ -44,6 +44,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: kGreyColor,
       body: SafeArea(
+        minimum: const EdgeInsets.symmetric(vertical: 2.0,horizontal: 2.0),
         bottom: false,
         child: Stack(
           children: [

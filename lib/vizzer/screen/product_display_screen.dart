@@ -24,7 +24,7 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabController=TabController(length: 2, vsync: this,initialIndex: 0);
+    tabController=TabController(length: 2, vsync: this,initialIndex: 1);
   }
   @override
   void dispose() {
@@ -38,7 +38,7 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
     // TODO: implement build
     return SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 30.0),
+          padding: const EdgeInsets.symmetric(vertical: 5.0,horizontal: 20.0),
          child: Column(
             children:  [
               const TopContainer(title: "Productos ", searchBar: "Search Product"),
@@ -57,7 +57,7 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
                   tabs: [
                     Container(
                       width: double.infinity,
-                      height: 50,
+                      height: 30,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
@@ -77,7 +77,7 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
 
                     Container(
                       width: double.infinity,
-                      height: 50,
+                      height: 30,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
@@ -98,6 +98,7 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
                   ],
 
               ),
+              const SizedBox(height: 15,),
               SizedBox(
                 height: MediaQuery.of(context).size.height,
                 child: TabBarView(
