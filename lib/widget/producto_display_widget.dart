@@ -5,14 +5,15 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:prubas_home/firebase_admin/firebase_admine.dart';
 import 'package:prubas_home/classes/product.dart';
-import 'styles/colors_personalizados.dart';
+import 'package:prubas_home/styles/text_style.dart';
+import '../styles/colors_personalizados.dart';
 
 class ProductoDisplayWidget extends StatelessWidget{
 
   final bool gender;
   const ProductoDisplayWidget({super.key, required this.gender});
 
-
+    // se peude costumizar pasandole com paramtro de entrada una lista
 
 
   @override
@@ -49,11 +50,11 @@ class ProductoDisplayWidget extends StatelessWidget{
                 padding: const EdgeInsets.only(bottom: 10.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(28.0),
-                  color: kRedColor,
+                  color: gender?kRedColor:kBackgournd,
                   boxShadow: const [
                     BoxShadow(
                       color: kBackgournd,
-                      blurRadius: 5,spreadRadius: 1,
+                      blurRadius: 7,spreadRadius: 6,
                       offset: Offset(1, 1)
                     ),
                   ],
@@ -78,13 +79,17 @@ class ProductoDisplayWidget extends StatelessWidget{
                         productList.productName,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
+                        style:gender? kTitleStyle.copyWith(fontSize: 15,color: kBackgournd):kTitleStyle.copyWith(fontSize: 15,color: kWihte),
                       ),
                     ),
                     Padding(
                         padding: const EdgeInsets.only(left: 8.0,right: 8.0),
                     child: Row(
                       children: [
-                        Text("\€${productList.currentPrice}"),
+                        Text("\€${productList.currentPrice}",
+                        style: const TextStyle(
+                            color: kGreyColor),),
+
                         const SizedBox(width: 10,),
                         Text("\€${productList.oldPrice}",
                         style: const TextStyle(
@@ -118,8 +123,8 @@ class ProductoDisplayWidget extends StatelessWidget{
                     productList.isLiked==true?
                     FontAwesomeIcons.solidHeart:FontAwesomeIcons.heart,
                     size: 15,
-                      color: kWihte
-                    ,
+                      color: kRedColor,
+
                   ),
                 ),
             ),

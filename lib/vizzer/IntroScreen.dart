@@ -102,13 +102,13 @@ class _IntroScreenState extends State<IntroScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:  [
                     const SizedBox(height: 100,),
-                    const Text("text-text \n text-text-text",
+                    const Text("WELCOME",
                     style: kTextStyle,
                         textAlign: TextAlign.center),
 
-                    const SizedBox(height: 30,),
+                    const SizedBox(height: 20,),
 
-                    const Text("text-text \n text-text-text",
+                    const Text("welcome",
                         style: kSubTextStyle,
                         textAlign: TextAlign.center),
 

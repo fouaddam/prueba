@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
-import 'package:prubas_home/producto_display_widget.dart';
+import 'package:prubas_home/widget/producto_display_widget.dart';
 import 'package:prubas_home/styles/text_style.dart';
 import 'package:prubas_home/costum_view/top_container.dart';
 
@@ -61,18 +61,17 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                        color: selectedValue==1?
-                        kBackgournd:kRedColor,
+                        color: kRedColor,
                         boxShadow: selectedValue==0
                             ? [ const BoxShadow(
                             color: kBackgournd,
-                            blurRadius: 5,
-                            spreadRadius: 1,
+                            blurRadius: 7,
+                            spreadRadius: 4,
                             offset: Offset(0, 1)
                         )
                         ]:null,
                       ),
-                      child:  Text("Hombre",style: kTextStyle.copyWith(fontSize: 20,color: kWihte),),
+                      child:  Text("Mujer",style: kTextStyle.copyWith(fontSize: 18,color: kWihte),),
                     ),
 
                     Container(
@@ -81,8 +80,7 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: selectedValue==0?
-                        kBackgournd:kRedColor,
+                        color: kBackgournd,
                         boxShadow: selectedValue==1
                         ? [ const BoxShadow(
                                 color: kBackgournd,
@@ -92,7 +90,7 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
                               )
                         ]:null,
                       ),
-                      child:  Text("Mujer",style: kTextStyle.copyWith(fontSize: 20,color: kWihte),
+                      child:  Text("Hombre",style: kTextStyle.copyWith(fontSize: 18,color: kWihte),
                       ),
                     ),
                   ],
@@ -105,8 +103,9 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
                   physics: const NeverScrollableScrollPhysics(),
                   controller: tabController,
                   children: const [
+                    ProductoDisplayWidget(gender:true),
                     ProductoDisplayWidget(gender:false),
-                    ProductoDisplayWidget(gender:true)
+
 
                   ],
 
