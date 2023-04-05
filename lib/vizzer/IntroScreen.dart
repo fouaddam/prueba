@@ -54,7 +54,7 @@ class _IntroScreenState extends State<IntroScreen> {
             top: MediaQuery
                 .of(context)
                 .size
-                .height * 0.11,
+                .height * 0.20,
             child:Container(
               decoration: BoxDecoration(
                 color: Colors.white60,
@@ -102,8 +102,8 @@ class _IntroScreenState extends State<IntroScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:  [
                     const SizedBox(height: 100,),
-                    const Text("WELCOME",
-                    style: kTextStyle,
+                     Text("WELCOME",
+                    style: kTextStyle.copyWith(fontFamily: "Lobster",fontSize: 45),
                         textAlign: TextAlign.center),
 
                     const SizedBox(height: 10,),
