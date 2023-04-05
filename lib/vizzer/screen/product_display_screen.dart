@@ -24,7 +24,7 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen>
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabController=TabController(length: 2, vsync: this,initialIndex: 1);
+    tabController=TabController(length: 2, vsync: this,initialIndex: 0);
   }
   @override
   void dispose() {

@@ -27,7 +27,7 @@ class ProductoDisplayWidget extends StatelessWidget{
         itemBuilder: (context,index){
           return singleItemWiget(
               gender?FireBaseAdmin.productListW[index]:FireBaseAdmin.productListM[index],
-              index==FireBaseAdmin.productListW.length -1? true:false,
+              index==FireBaseAdmin.productListW.length -1? true:false,//hay que corrigerlo normalmente aqui ponemos el lenght total
               context,
 
           );
@@ -43,61 +43,64 @@ class ProductoDisplayWidget extends StatelessWidget{
       children: [
         Stack(
           children: [
-            Container(
-              padding: const EdgeInsets.only(bottom: 10.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(28.0),
-                color: kWihte,
-                boxShadow: const [
-                  BoxShadow(
-                    color: kBackgournd,
-                    blurRadius: 5,spreadRadius: 1,
-                    offset: Offset(1, 1)
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: CachedNetworkImage(imageUrl:
-                    productList.productUrl,
-                    fit: BoxFit.cover,
+            Padding(
+              padding: const EdgeInsets.all(6.0),
+              child: Container(
+                padding: const EdgeInsets.only(bottom: 10.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(28.0),
+                  color: kRedColor,
+                  boxShadow: const [
+                    BoxShadow(
+                      color: kBackgournd,
+                      blurRadius: 5,spreadRadius: 1,
+                      offset: Offset(1, 1)
                     ),
-                  ),
-                   Padding(
-                      padding: const EdgeInsets.only(
-                        left: 8.0,
-                        right: 8.0,
-                        top: 10.0,
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: CachedNetworkImage(imageUrl:
+                      productList.productUrl,
+                      fit: BoxFit.cover,
                       ),
-                    child: Text(
-                      productList.productName,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.only(left: 8.0,right: 8.0),
-                  child: Row(
-                    children: [
-                      Text("\€${productList.currentPrice}"),
-                      const SizedBox(width: 10,),
-                      Text("\€${productList.oldPrice}",
-                      style: const TextStyle(
-                        color: kGreyColor,
-                        decoration: TextDecoration.lineThrough,
-                        decorationColor: kRedColor,
-                        decorationThickness: 2
-
+                     Padding(
+                        padding: const EdgeInsets.only(
+                          left: 8.0,
+                          right: 8.0,
+                          top: 10.0,
+                        ),
+                      child: Text(
+                        productList.productName,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      ),
-                    ],
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(left: 8.0,right: 8.0),
+                    child: Row(
+                      children: [
+                        Text("\€${productList.currentPrice}"),
+                        const SizedBox(width: 10,),
+                        Text("\€${productList.oldPrice}",
+                        style: const TextStyle(
+                          color: kGreyColor,
+                          decoration: TextDecoration.lineThrough,
+                          decorationColor: kRedColor,
+                          decorationThickness: 2
 
-                  ),
-                  ),
-                ],
+                        ),
+                        ),
+                      ],
+
+                    ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Positioned(

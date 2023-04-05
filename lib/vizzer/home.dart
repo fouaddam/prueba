@@ -68,9 +68,9 @@ class _HomeState extends State<Home> {
                 right: 20,
                 child: Container(
                   alignment: Alignment.center,
-                  height: 70,
+                  height: 40,
                   decoration: BoxDecoration(
-                    color: Colors.black38,
+                    color: kBackgournd,
                     borderRadius: BorderRadius.circular(40.0)
                   ),
                   child: Row(
@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
 
 
                       },
-                          icon: Icon(icono,color: kBackgournd,size: 22,)
+                          icon: Icon(icono,color: kWihte,size: 22,)
                       )
                       ),
 
