@@ -106,7 +106,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     style: kTextStyle,
                         textAlign: TextAlign.center),
 
-                    const SizedBox(height: 20,),
+                    const SizedBox(height: 10,),
 
                     const Text("welcome",
                         style: kSubTextStyle,
