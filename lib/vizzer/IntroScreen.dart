@@ -88,11 +88,10 @@ class _IntroScreenState extends State<IntroScreen> {
                 decoration:  const BoxDecoration(
                   gradient: LinearGradient(
                     colors:[
+                     kTransparent,
                       kTransparent,
-                      kTransparent,
-                      kWihte60,
+                      Colors.white60,
                       kWihte,
-                      kWihte
                     ],
                     begin: Alignment.topCenter,
                     end:Alignment.center
