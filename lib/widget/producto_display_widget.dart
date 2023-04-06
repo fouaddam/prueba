@@ -1,6 +1,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:prubas_home/firebase_admin/firebase_admine.dart';
@@ -8,26 +9,30 @@ import 'package:prubas_home/classes/product.dart';
 import 'package:prubas_home/styles/text_style.dart';
 import '../styles/colors_personalizados.dart';
 
-class ProductoDisplayWidget extends StatelessWidget{
+class ProductoDisplayWidget extends StatefulWidget{
 
   final bool gender;
   const ProductoDisplayWidget({super.key, required this.gender});
 
+
+  @override
+  State<ProductoDisplayWidget> createState() => _ProductoDisplayWidgetState();
+}
+
+class _ProductoDisplayWidgetState extends State<ProductoDisplayWidget> {
     // se peude costumizar pasandole com paramtro de entrada una lista
-
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return MasonryGridView.count(
         padding: const EdgeInsets.symmetric(vertical: 10.0),
-        crossAxisSpacing: 15,
+        crossAxisSpacing: 6,
         crossAxisCount: 2,
-        itemCount: gender?FireBaseAdmin.productListW.length:FireBaseAdmin.productListM.length,
-        mainAxisSpacing: 10,
+        itemCount: widget.gender?FireBaseAdmin.productListW.length:FireBaseAdmin.productListM.length,
+        mainAxisSpacing: 5,
         itemBuilder: (context,index){
           return singleItemWiget(
-              gender?FireBaseAdmin.productListW[index]:FireBaseAdmin.productListM[index],
+              widget.gender?FireBaseAdmin.productListW[index]:FireBaseAdmin.productListM[index],
               index==FireBaseAdmin.productListW.length -1? true:false,//hay que corrigerlo normalmente aqui ponemos el lenght total
               context,
 
@@ -38,7 +43,7 @@ class ProductoDisplayWidget extends StatelessWidget{
 
   }
 
-  Widget singleItemWiget(Product productList, bool lastItem,BuildContext context) {
+  Widget singleItemWiget(Product product, bool lastItem,BuildContext context) {
 
     return Column(
       children: [
@@ -50,7 +55,7 @@ class ProductoDisplayWidget extends StatelessWidget{
                 padding: const EdgeInsets.only(bottom: 10.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(28.0),
-                  color: gender?kRedColor:kBackgournd,
+                  color: widget.gender?kRedColor:kBackgournd,
                   boxShadow: const [
                     BoxShadow(
                       color: kBackgournd,
@@ -65,7 +70,7 @@ class ProductoDisplayWidget extends StatelessWidget{
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: CachedNetworkImage(imageUrl:
-                      productList.productUrl,
+                      product.productUrl,
                       fit: BoxFit.cover,
                       ),
                     ),
@@ -76,22 +81,22 @@ class ProductoDisplayWidget extends StatelessWidget{
                           top: 10.0,
                         ),
                       child: Text(
-                        productList.productName,
+                        product.productName,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style:gender? kTitleStyle.copyWith(fontSize: 15,color: kBackgournd):kTitleStyle.copyWith(fontSize: 15,color: kWihte),
+                        style:widget.gender? kTitleStyle.copyWith(fontSize: 15,color: kBackgournd):kTitleStyle.copyWith(fontSize: 15,color: kWihte),
                       ),
                     ),
                     Padding(
                         padding: const EdgeInsets.only(left: 8.0,right: 8.0),
                     child: Row(
                       children: [
-                        Text("\€${productList.currentPrice}",
+                        Text("\€${product.currentPrice}",
                         style: const TextStyle(
                             color: kGreyColor),),
 
                         const SizedBox(width: 10,),
-                        Text("\€${productList.oldPrice}",
+                        Text("\€${product.oldPrice}",
                         style: const TextStyle(
                           color: kGreyColor,
                           decoration: TextDecoration.lineThrough,
@@ -119,12 +124,35 @@ class ProductoDisplayWidget extends StatelessWidget{
                     shape: BoxShape.circle
                   ),
                   alignment: Alignment.center,
-                  child: Icon(
+                  child:/* Icon(
                     productList.isLiked==true?
                     FontAwesomeIcons.solidHeart:FontAwesomeIcons.heart,
                     size: 15,
                       color: kRedColor,
+                  ),*/
+                  IconButton(
+                      onPressed: () {
 
+                       /* if(productList.isLiked){
+                          productList.isLiked=false;
+                        } else if(productList.isLiked==false){
+                          productList.isLiked=true;
+                             }*/
+
+
+                        setState(() {
+                          if(FireBaseAdmin.shopping_cart.contains(product)){
+                            FireBaseAdmin.shopping_cart.remove(product);
+                          }else{
+                            FireBaseAdmin.shopping_cart.add(product);
+                          }
+
+                        });
+                        },
+
+                      icon:  Icon(iconChech(product),
+                        size: 15,
+                        color: kRedColor,)
                   ),
                 ),
             ),
@@ -140,6 +168,17 @@ class ProductoDisplayWidget extends StatelessWidget{
 
   }
 
+  IconData? iconChech(Product product) {
+    List<Product>list=FireBaseAdmin.shopping_cart;
+    if(list.contains(product)){
+      print(product.productName.toString());
+    }
+   late IconData j =FontAwesomeIcons.heart;
 
-
-}
+    if(FireBaseAdmin.shopping_cart.contains(product)){
+      j= FontAwesomeIcons.solidHeart;
+      print("siiiii");
+    }
+      return j;
+    }
+  }
