@@ -1,10 +1,12 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
 import 'package:prubas_home/vizzer/screen/category_display_screen.dart';
 import 'package:prubas_home/vizzer/screen/product_display_screen.dart';
+
+import '../costum_view/show_bottom_sheet.dart';
+import '../firebase_admin/firebase_admine.dart';
 
 
 class Home extends StatefulWidget{
@@ -26,16 +28,18 @@ class _HomeState extends State<Home> {
   final tabBarIconos=[
     FontAwesomeIcons.house,
     FontAwesomeIcons.compass,
-    FontAwesomeIcons.cartShopping,
     FontAwesomeIcons.user,
+    FontAwesomeIcons.cartShopping,
   ];
 
   final tabBarIconosPressed=[
     FontAwesomeIcons.airbnb,
     FontAwesomeIcons.compass,
-    FontAwesomeIcons.cartShopping,
     FontAwesomeIcons.user,
+    FontAwesomeIcons.cartShopping,
   ];
+
+
 
 
   @override
@@ -77,19 +81,35 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ...tabBarIconos.map((icono) => IconButton(onPressed: (){
-                        icono==FontAwesomeIcons.house?
-                        colorICon=Colors.limeAccent:
+                        icono==FontAwesomeIcons.cartShopping?
+                        BottomSheetClass(context).ShowButtomSheet():
                         icono=tabBarIconosPressed.first;
-
 
                       },
                           icon: Icon(icono,color: kWihte,size: 22,)
                       )
                       ),
 
+                      Container(
+                        height: 10
+                        ,
+                        width: 10,
+                        alignment:AlignmentDirectional.centerStart,
+                        child:const Icon(
+                      FontAwesomeIcons.bagShopping, size: 15,
+                      color: kRedColor,
+
+                  ),
+
+                      ),
+                      Text(FireBaseAdmin.shopping_cart.length.toString(),
+                        style: const TextStyle(color: kRedColor),
+                      ),
                     ],
                   ),
-              
+
+
+
             ),
             )
           ],
@@ -99,4 +119,6 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+
+
 }

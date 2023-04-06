@@ -8,6 +8,7 @@ import 'package:prubas_home/firebase_admin/firebase_admine.dart';
 import 'package:prubas_home/classes/product.dart';
 import 'package:prubas_home/styles/text_style.dart';
 import '../styles/colors_personalizados.dart';
+import '../vizzer/home.dart';
 
 class ProductoDisplayWidget extends StatefulWidget{
 
@@ -15,11 +16,24 @@ class ProductoDisplayWidget extends StatefulWidget{
   const ProductoDisplayWidget({super.key, required this.gender});
 
 
+
   @override
   State<ProductoDisplayWidget> createState() => _ProductoDisplayWidgetState();
 }
 
 class _ProductoDisplayWidgetState extends State<ProductoDisplayWidget> {
+
+  List<Product>list_shopping=FireBaseAdmin.shopping_cart;
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
+
+
     // se peude costumizar pasandole com paramtro de entrada una lista
   @override
   Widget build(BuildContext context) {
@@ -132,21 +146,12 @@ class _ProductoDisplayWidgetState extends State<ProductoDisplayWidget> {
                   ),*/
                   IconButton(
                       onPressed: () {
-
-                       /* if(productList.isLiked){
-                          productList.isLiked=false;
-                        } else if(productList.isLiked==false){
-                          productList.isLiked=true;
-                             }*/
-
-
                         setState(() {
-                          if(FireBaseAdmin.shopping_cart.contains(product)){
-                            FireBaseAdmin.shopping_cart.remove(product);
+                          if(list_shopping.contains(product)){
+                            list_shopping.remove(product);
                           }else{
-                            FireBaseAdmin.shopping_cart.add(product);
+                            list_shopping.add(product);
                           }
-
                         });
                         },
 
@@ -169,13 +174,13 @@ class _ProductoDisplayWidgetState extends State<ProductoDisplayWidget> {
   }
 
   IconData? iconChech(Product product) {
-    List<Product>list=FireBaseAdmin.shopping_cart;
-    if(list.contains(product)){
+
+    if(list_shopping.contains(product)){
       print(product.productName.toString());
     }
    late IconData j =FontAwesomeIcons.heart;
 
-    if(FireBaseAdmin.shopping_cart.contains(product)){
+    if(list_shopping.contains(product)){
       j= FontAwesomeIcons.solidHeart;
       print("siiiii");
     }
