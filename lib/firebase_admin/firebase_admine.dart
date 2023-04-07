@@ -41,9 +41,7 @@ class FireBaseAdmin{
   ];
 
   static List<Product> shopping_cart=[
-    Product("fashion9", "https://img.freepik.com/foto-gratis/retrato-guapo-modelo-lambersexual-hipster-estilo-seguro-hombre-vestido-chaqueta-negra-jeans-hombre-moda-posando-estudio-cerca-pared-gris_158538-24009.jpg?size=626&ext=jpg", "30", "50", false, true),
-    Product("fashion10", "https://img.freepik.com/foto-gratis/retrato-guapo-modelo-lambersexual-estilo-hipster-peinado-rizado-hombre-sexy-vestido-jeans-camiseta-blanca-hombre-moda-aislado-pared-azul-estudio_158538-26572.jpg?size=626&ext=jpg&ga=GA1.2.919045402.1680694930&semt=ais", "30", "50", false, true),
-    Product("fashion11", "https://img.freepik.com/fotos-premium/hombre-barbudo-camiseta-blanca_53876-151733.jpg?size=626&ext=jpg&ga=GA1.2.919045402.1680694930&semt=ais", "30", "50", false, true),
+
    // Product("fashion1", "https://img.freepik.com/fotos-premium/joven-hermosa-mujer-rubia-blusa-marron-pantalones-sostiene-bolso-rosa_118342-50594.jpg?w=740", "400", "200", true,false),
   ];
 

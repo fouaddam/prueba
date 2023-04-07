@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
 import 'package:prubas_home/styles/text_style.dart';
 
+import '../classes/product.dart';
 import '../firebase_admin/firebase_admine.dart';
 
 class CarteItemSimple extends StatefulWidget {
@@ -15,6 +16,17 @@ class CarteItemSimple extends StatefulWidget {
 }
 
 class _CarteItemSimpleState extends State<CarteItemSimple> {
+
+  int _cartAmount=1;
+  List<Product>listProduct=[];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    listProduct=FireBaseAdmin.shopping_cart;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -25,42 +37,43 @@ class _CarteItemSimpleState extends State<CarteItemSimple> {
             ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              itemCount: FireBaseAdmin.shopping_cart.length,//hay que crear una lista de categorias
+              itemCount: listProduct.length,//hay que crear una lista de categorias
               itemBuilder: (context,index){
                 return Container(
                   width: MediaQuery.of(context).size.width*0.80,
-                  height: 100,
+                  height: MediaQuery.of(context).size.height*0.12,
                   margin: const EdgeInsets.only(
                       bottom: 10.0,left: 10.0,right: 10.0
                   ),
                    decoration: BoxDecoration(
-                     color: kBackgournd,
+                     color:kBackgournd,
                      borderRadius: BorderRadius.circular(10)
               ),
 
                   child: Row(
                     children: [
-                      Radio(
+                      /*Radio(
                         value:"",
                         groupValue: "",
                         activeColor :kRedColor,
                         onChanged: (String? value) {
                         },
 
-                      ),
+                      ),*/
                       Container(
-                        height: 70,
+                        height: 80,
                         width: 80,
-                        margin: const EdgeInsets.only(left: 10),
+                        margin: const EdgeInsets.only(left: 15),
                         decoration: BoxDecoration(
                             color: kWihte,
                             borderRadius: BorderRadius.circular(100)
                         ),
-                        child: CachedNetworkImage(imageUrl: FireBaseAdmin.shopping_cart[index].productUrl,
+                        child: CachedNetworkImage(imageUrl: listProduct[index].productUrl,
                           fit: BoxFit.cover,
                         ),
 
                       ),
+
                       Padding(
                         padding: const EdgeInsets.only(left: 15,top: 10),
                         child: Column(
@@ -68,40 +81,51 @@ class _CarteItemSimpleState extends State<CarteItemSimple> {
                           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              FireBaseAdmin.shopping_cart[index].productName,
+                              listProduct[index].productName,
                               style: const TextStyle(
                                 color: kRedColor,
                                 fontSize: 16
                               ),
                             ),
                             const SizedBox(height: 10,),
-                            Text("${FireBaseAdmin.shopping_cart[index].currentPrice} Euros",
+                            Text("${listProduct[index].currentPrice} Euros",
                               style: kTextStyle.copyWith(color: kWihte,fontSize: 15),)
 
                           ],
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8.0),
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Row(
                               children: [
-                                Container(
-                                  padding: const EdgeInsets.all(4),
-                                  margin: const EdgeInsets.only(left: 80),
-                                  child: const Icon( Icons.delete_outlined,
-                                    color: kRedColor,
+                                SizedBox(
+                                  height: 30,
+                                  width: 30,
+                                  child: IconButton(
+                                    icon:  const Icon(Icons.delete,size: 25,color: kRedColor,),
+                                    onPressed: () {
+
+                                      setState(() {
+                                        listProduct.removeAt(index);
+                                        print(index);
+
+                                      });
+                                    },
                                   ),
                                 ),
                               ],
                             ),
                             Row(
                               children: [
+                                const SizedBox(width: 60,),
                                 Container(
-                                  padding: const EdgeInsets.all(4),
+                                  height: 35,
+                                  width: 35,
+                                  padding: const EdgeInsets.all(6),
                                   decoration: BoxDecoration(
                                     color: kWihte,
                                     borderRadius: BorderRadius.circular(20),
@@ -113,13 +137,36 @@ class _CarteItemSimpleState extends State<CarteItemSimple> {
                                       )
                                     ],
                                   ),
-                                  child: Icon(
-                                    FontAwesomeIcons.plus
+                                  child: IconButton(
+                                    icon:  const Icon(FontAwesomeIcons.plus,size: 10,),
+                                    onPressed: () {
+                                      setState(() {
+                                        print("---------------------------$index");
+                                        _cartAmount++;
+                                      });
+                                      },
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Positioned(
+                                    child: Container(
+                                      height: 20,
+                                      width: 20,
+                                      decoration: const BoxDecoration(
+                                          color: kRedColor,
+                                          shape: BoxShape.circle
+                                      ),
+                                      alignment: Alignment.center,
+                                      child:Text(_cartAmount.toString()),
+                                    ),
                                   ),
                                 ),
 
                                 Container(
-                                  padding: const EdgeInsets.all(4),
+                                  height: 35,
+                                  width: 35,
+                                  padding: const EdgeInsets.all(6),
                                   decoration: BoxDecoration(
                                     color: kWihte,
                                     borderRadius: BorderRadius.circular(20),
@@ -131,8 +178,20 @@ class _CarteItemSimpleState extends State<CarteItemSimple> {
                                       )
                                     ],
                                   ),
-                                  child: Icon(
-                                      FontAwesomeIcons.minus
+                                  child:IconButton(
+                                    icon:  const Icon(FontAwesomeIcons.minus,size: 10,),
+                                    onPressed: () {
+                                      setState(() {
+
+                                        if(_cartAmount==1){
+                                          print("no puedes");
+                                        }else{
+                                          _cartAmount--;
+                                        }
+
+                                      });
+
+                                    },
                                   ),
                                 ),
                               ],

@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:prubas_home/classes/product.dart';
 import 'package:prubas_home/firebase_admin/firebase_admine.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
 
@@ -16,9 +17,12 @@ class CartePage extends StatefulWidget {
 }
 
 class _CartePageState extends State<CartePage> {
+
   int _cartBadgeAmount = FireBaseAdmin.shopping_cart.length;
   late bool _showCartBadge;
   Color color = Colors.red;
+
+  List<Product> _listProductShopping = FireBaseAdmin.shopping_cart;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +31,9 @@ class _CartePageState extends State<CartePage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: kGreyColor,
         appBar: AppBar(
+          backgroundColor: kBackgournd,
           leading: badges.Badge(
             position: badges.BadgePosition.topEnd(top: 10, end: 10),
             child: IconButton(
@@ -43,9 +48,10 @@ class _CartePageState extends State<CartePage> {
           bottom: _tabBar(),
         ),
         body: Column(
-          children: <Widget>[
-            _addRemoveCartButtons(),
-            const CarteItemSimple(),
+          children:  <Widget>[
+            //_addRemoveCartButtons(),
+            const SizedBox(height: 20,),
+            CarteItemSimple(),
           ],
         ),
       ),
@@ -79,14 +85,11 @@ class _CartePageState extends State<CartePage> {
             badgeColor: Colors.black26,
           ),
           position: badges.BadgePosition.topEnd(top: -14),
-          badgeContent: const Text(
-            '3',
-            style: TextStyle(color: Colors.white),
+          badgeContent:  Text(
+            _cartBadgeAmount.toString(),
+            style: const TextStyle(color: Colors.white),
           ),
-          child: Icon(
-            Icons.account_balance_wallet,
-            color: Colors.grey[800],
-          ),
+          child: const Text("tu carrito")
         ),
       ),
       Tab(
@@ -106,13 +109,13 @@ class _CartePageState extends State<CartePage> {
           ),
           position: badges.BadgePosition.topEnd(top: -12, end: -20),
           badgeContent: const Text(
-            '20%',
+            '-20%',
             style: TextStyle(
                 color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
           ),
           child: const Text(
             'finaliza tu compra',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: kWihte),
           ),
         ),
       ),
