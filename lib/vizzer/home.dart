@@ -1,12 +1,12 @@
 
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
+import 'package:prubas_home/vizzer/screen/carte_page.dart';
 import 'package:prubas_home/vizzer/screen/category_display_screen.dart';
 import 'package:prubas_home/vizzer/screen/product_display_screen.dart';
 
-import '../costum_view/show_bottom_sheet.dart';
-import '../firebase_admin/firebase_admine.dart';
 
 
 class Home extends StatefulWidget{
@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
   int currentIndexBar=0;//bar
   Color colorICon=kRedColor;
 
-  final pageControiller=PageController(initialPage: 0);
+  final pageController=PageController(initialPage: 0);
 
   //iconos
   final tabBarIconos=[
@@ -31,15 +31,6 @@ class _HomeState extends State<Home> {
     FontAwesomeIcons.user,
     FontAwesomeIcons.cartShopping,
   ];
-
-  final tabBarIconosPressed=[
-    FontAwesomeIcons.airbnb,
-    FontAwesomeIcons.compass,
-    FontAwesomeIcons.user,
-    FontAwesomeIcons.cartShopping,
-  ];
-
-
 
 
   @override
@@ -53,7 +44,7 @@ class _HomeState extends State<Home> {
         child: Stack(
           children: [
             PageView(
-              controller: pageControiller,
+              controller: pageController,
               onPageChanged: (index){
                 setState(() {
                   currentIndex=index;
@@ -62,11 +53,12 @@ class _HomeState extends State<Home> {
 
               children: const [
                 ProductDisplayScreen(),
-                CategoryDisplayScreen()
+                CategoryDisplayScreen(),
+                CartePage(),
               ],
             ),
             
-            Positioned(
+            /*Positioned(
                 bottom: 20,
                 left: 20,
                 right: 20,
@@ -108,16 +100,28 @@ class _HomeState extends State<Home> {
                     ],
                   ),
 
-
-
             ),
-            )
+            ),*/
+
           ],
 
         ),
 
       ),
-    );
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: kTransparent,
+        animationCurve: Curves.easeInCubic,
+        items:  <Widget> [
+          Icon(tabBarIconos[0],size: 20,),
+          Icon(tabBarIconos[1],size: 20,),
+          Icon(tabBarIconos[2],size: 20,),
+          Icon(tabBarIconos[3],size: 20,),
+        ],
+        onTap: (index) {
+          pageController.jumpToPage(index);
+        },
+      ),
+      );
   }
 
 
