@@ -1,15 +1,21 @@
+import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
 import 'package:prubas_home/styles/text_style.dart';
-
+import 'package:prubas_home/vizzer/screen/carte_page.dart';
 import '../classes/product.dart';
 import '../firebase_admin/firebase_admine.dart';
 
+
+StreamController<int> streamController=StreamController<int>.broadcast();
+
 class CarteItemSimple extends StatefulWidget {
   const CarteItemSimple({Key? key}) : super(key: key);
+
+
 
   @override
   State<CarteItemSimple> createState() => _CarteItemSimpleState();
@@ -20,12 +26,17 @@ class _CarteItemSimpleState extends State<CarteItemSimple> {
   int _cartAmount=1;
   List<Product>listProduct=[];
 
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     listProduct=FireBaseAdmin.shopping_cart;
+
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -111,9 +122,11 @@ class _CarteItemSimpleState extends State<CarteItemSimple> {
 
                                       setState(() {
                                         listProduct.removeAt(index);
-                                        print(index);
-
-                                      });
+                                       CartePage(items: listProduct.length,stream:streamController.stream ,);
+                                       streamController.add(listProduct.length);
+                                      //  streamController.stream.asBroadcastStream().listen(listProduct.length);
+                                      }
+                                      );
                                     },
                                   ),
                                 ),

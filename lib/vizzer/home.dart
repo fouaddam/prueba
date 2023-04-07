@@ -2,10 +2,13 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:prubas_home/costum_view/cart_item_simples.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
 import 'package:prubas_home/vizzer/screen/carte_page.dart';
 import 'package:prubas_home/vizzer/screen/category_display_screen.dart';
 import 'package:prubas_home/vizzer/screen/product_display_screen.dart';
+
+import '../firebase_admin/firebase_admine.dart';
 
 
 
@@ -51,10 +54,10 @@ class _HomeState extends State<Home> {
                 });
               },
 
-              children: const [
-                ProductDisplayScreen(),
-                CategoryDisplayScreen(),
-                CartePage(),
+              children:  [
+                const ProductDisplayScreen(),
+                const CategoryDisplayScreen(),
+                CartePage( items: FireBaseAdmin.shopping_cart.length, stream: streamController.stream,),//hay que pasare la lista de item shopping
               ],
             ),
             
