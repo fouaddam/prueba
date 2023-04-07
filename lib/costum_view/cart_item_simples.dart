@@ -82,11 +82,62 @@ class _CarteItemSimpleState extends State<CarteItemSimple> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.symmetric(vertical: 8.0),
                         child: Column(
-                          children: const [
-                          Icon( Icons.delete_outlined,
-                          color: kWihte,),
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(4),
+                                  margin: const EdgeInsets.only(left: 80),
+                                  child: const Icon( Icons.delete_outlined,
+                                    color: kRedColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                    color: kWihte,
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.red.withOpacity(0.5),
+                                        spreadRadius: 3,
+                                        blurRadius: 10
+                                      )
+                                    ],
+                                  ),
+                                  child: Icon(
+                                    FontAwesomeIcons.plus
+                                  ),
+                                ),
+
+                                Container(
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                    color: kWihte,
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.red.withOpacity(0.5),
+                                          spreadRadius: 3,
+                                          blurRadius: 10
+                                      )
+                                    ],
+                                  ),
+                                  child: Icon(
+                                      FontAwesomeIcons.minus
+                                  ),
+                                ),
+                              ],
+                            ),
+
                           ],
                         ),
                       )
