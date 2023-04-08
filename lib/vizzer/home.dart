@@ -57,7 +57,7 @@ class _HomeState extends State<Home> {
               children:  [
                 const ProductDisplayScreen(),
                 const CategoryDisplayScreen(),
-                CartePage( items: FireBaseAdmin.shopping_cart.length, stream: streamController.stream,),//hay que pasare la lista de item shopping
+                CartePage( items: FireBaseAdmin.order_list.length, stream: streamController.stream,),//hay que pasare la lista de item shopping
               ],
             ),
             

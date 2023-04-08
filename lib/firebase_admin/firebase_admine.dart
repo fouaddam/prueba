@@ -4,6 +4,7 @@ import 'dart:ffi';
 import 'package:prubas_home/classes/product.dart';
 
 import '../classes/category.dart';
+import '../classes/order.dart';
 
 class FireBaseAdmin{
 
@@ -44,6 +45,10 @@ class FireBaseAdmin{
   static List<Product> shopping_cart=[
 
    // Product("fashion1", "https://img.freepik.com/fotos-premium/joven-hermosa-mujer-rubia-blusa-marron-pantalones-sostiene-bolso-rosa_118342-50594.jpg?w=740", "400", "200", true,false),
+  ];
+
+  static List<Order>order_list=[
+
   ];
 
 

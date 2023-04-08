@@ -22,8 +22,8 @@ class BottomSheetClass  {
             child: Text(lista[index].productName),
           ),
           title: Text('Price ${lista[index].currentPrice}'' Euros'),
-          subtitle: Text('Item description'),
-          trailing: Icon(Icons.more_vert),
+          subtitle: const Text('Item description'),
+          trailing: const Icon(Icons.more_vert),
         );
       },
     ),

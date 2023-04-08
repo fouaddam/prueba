@@ -66,7 +66,7 @@ class _ExampleState extends State<Example> {
           child: Stack(
 
             children: [
-              AnimatedContainer(duration: _duration, height: spaceBetween),
+
               Positioned(
 
                 left: 10,

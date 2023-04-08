@@ -7,6 +7,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:prubas_home/firebase_admin/firebase_admine.dart';
 import 'package:prubas_home/classes/product.dart';
 import 'package:prubas_home/styles/text_style.dart';
+import '../classes/order.dart';
+import '../classes/user.dart';
 import '../styles/colors_personalizados.dart';
 import '../vizzer/home.dart';
 
@@ -24,6 +26,7 @@ class ProductoDisplayWidget extends StatefulWidget{
 class _ProductoDisplayWidgetState extends State<ProductoDisplayWidget> {
 
   List<Product>list_shopping=FireBaseAdmin.shopping_cart;
+  List<Order>list_oder=FireBaseAdmin.order_list;
 
 
   @override
@@ -81,6 +84,7 @@ class _ProductoDisplayWidgetState extends State<ProductoDisplayWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: CachedNetworkImage(imageUrl:
@@ -128,7 +132,7 @@ class _ProductoDisplayWidgetState extends State<ProductoDisplayWidget> {
               ),
             ),
             Positioned(
-                right: 5,
+                right: 10,
                 top: 10,
                 child: Container(
                  height: 30,
@@ -147,7 +151,8 @@ class _ProductoDisplayWidgetState extends State<ProductoDisplayWidget> {
                   IconButton(
                       onPressed: () {
                         setState(() {
-                          if(list_shopping.contains(product)){
+
+                          if(list_shopping.contains(product)){ //añadir a favoritos
                             list_shopping.remove(product);
                           }else{
                             list_shopping.add(product);
@@ -160,6 +165,33 @@ class _ProductoDisplayWidgetState extends State<ProductoDisplayWidget> {
                         color: kRedColor,)
                   ),
                 ),
+            ),
+
+            Positioned(
+              right: 10,
+              bottom: 20,
+              child: Container(
+                height: 30,
+                width: 30,
+                decoration: const BoxDecoration(
+                    color: kWihte,
+                    shape: BoxShape.circle
+                ),
+                alignment: Alignment.center,
+                child: IconButton(
+                    onPressed: () {
+                      setState(() {
+
+                        list_oder.add(Order(User("fouad"), product,1));
+
+                      });
+                    },
+
+                    icon:  const Icon(FontAwesomeIcons.cartShopping,
+                      size: 15,
+                      color: kRedColor,)
+                ),
+              ),
             ),
 
           ],
@@ -176,13 +208,11 @@ class _ProductoDisplayWidgetState extends State<ProductoDisplayWidget> {
   IconData? iconChech(Product product) {
 
     if(list_shopping.contains(product)){
-      print(product.productName.toString());
     }
    late IconData j =FontAwesomeIcons.heart;
 
     if(list_shopping.contains(product)){
       j= FontAwesomeIcons.solidHeart;
-      print("siiiii");
     }
       return j;
     }

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
 import 'package:prubas_home/styles/text_style.dart';
+import '../classes/order.dart';
 import '../classes/product.dart';
 import '../firebase_admin/firebase_admine.dart';
 
@@ -41,16 +42,13 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
   }
 
   int _cartAmount=1;
-  List<Product>listProduct=[];
-
-  get onPressed => null;
-
+  List<Order>listProduct=[];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    listProduct=FireBaseAdmin.shopping_cart;
+    listProduct=FireBaseAdmin.order_list;
 
     _animationController = AnimationController(
       vsync: this,
@@ -58,9 +56,6 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
     );
 
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +117,7 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
                         ),
                             child: ClipRRect(
                               borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-                              child: CachedNetworkImage(imageUrl : listProduct[index].productUrl,fit: BoxFit.cover,),
+                              child: CachedNetworkImage(imageUrl : listProduct[index].product.productUrl,fit: BoxFit.cover,),
                             ),
                       ),
 
@@ -135,10 +130,10 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                listProduct[index].productName,
+                                listProduct[index].product.productName,
                                 style: kTextStyle.copyWith(fontSize: 17)
                               ),
-                              Text("${listProduct[index].currentPrice} Euros",
+                              Text("${listProduct[index].product.currentPrice} Euros",
                                 style: kTextStyle.copyWith(color: kBackgournd
 
                                     ,fontSize: 15),)
@@ -162,7 +157,7 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
                             setState(() {
                               listProduct.removeAt(index);
                               //CartePage(items: listProduct.length,stream:streamController.stream ,);
-                              streamController.add(listProduct.length);
+                              streamController.add(listProduct.length);//Carte
                               //  streamController.stream.asBroadcastStream().listen(listProduct.length);
                             }
                             );
@@ -192,12 +187,12 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
                                       icon:  const Icon(FontAwesomeIcons.plus,size: 20,color: kWihte,),
                                       onPressed: () {
                                         setState(() {
-                                          print("---------------------------$index");
-                                          _cartAmount++;
+                                          listProduct[index].quantity++;
+
                                         });
                                       },
                                     ),
-                                    Text(_cartAmount.toString(),style: const TextStyle(
+                                    Text(listProduct[index].quantity.toString(),style: const TextStyle(
                                       fontSize: 15,
                                       color: Colors.white
                                     ),
@@ -206,8 +201,7 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
                                       icon:  const Icon(FontAwesomeIcons.minus,size: 20,color: kWihte,),
                                       onPressed: () {
                                         setState(() {
-                                          print("---------------------------$index");
-                                          _cartAmount--;
+                                          listProduct[index].quantity--;
                                         });
                                       },
                                     ),

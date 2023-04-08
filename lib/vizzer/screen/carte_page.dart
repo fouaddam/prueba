@@ -5,6 +5,7 @@ import 'package:prubas_home/classes/product.dart';
 import 'package:prubas_home/firebase_admin/firebase_admine.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
 import 'package:prubas_home/styles/text_style.dart';
+import 'package:prubas_home/vizzer/screen/payment.dart';
 
 import '../../costum_view/cart_item_simples.dart';
 
@@ -24,7 +25,7 @@ class CartePage extends StatefulWidget {
 class _CartePageState extends State<CartePage>   with SingleTickerProviderStateMixin {
 
   late AnimationController _animationController;
-  int _cartBadgeAmount = FireBaseAdmin.shopping_cart.length;
+  int _cartBadgeAmount = FireBaseAdmin.order_list.length;
   late bool _showCartBadge;
   @override
   void dispose() {
@@ -69,7 +70,7 @@ class _CartePageState extends State<CartePage>   with SingleTickerProviderStateM
             child: IconButton(onPressed: _onPressed, icon: AnimatedIcon(
               icon: AnimatedIcons.view_list,
               progress: _animationController,
-              color: Colors.black,
+              color: kWihte,
               size: 44,
             ),
             ),
@@ -80,12 +81,16 @@ class _CartePageState extends State<CartePage>   with SingleTickerProviderStateM
           ],
           bottom: _tabBar(carteItemSimple),
         ),
-        body: Column(
-          children:   <Widget>[
-            //_addRemoveCartButtons(),
-            const SizedBox(height: 20,),
-            carteItemSimple,
-          ],
+        body:TabBarView(children: [
+          Column(
+            children:   <Widget>[
+              //_addRemoveCartButtons(),
+              const SizedBox(height: 20,),
+              carteItemSimple,
+            ],
+          ),
+          const Payment(),
+        ],
         ),
       ),
     );
@@ -194,3 +199,4 @@ class _CartePageState extends State<CartePage>   with SingleTickerProviderStateM
     );
   }
 }
+
