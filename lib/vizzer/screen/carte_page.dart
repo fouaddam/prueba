@@ -13,7 +13,7 @@ import '../../costum_view/cart_item_simples.dart';
 class CartePage extends StatefulWidget {
 
    late final int items;
-  final Stream<int> stream;
+   final Stream<int> stream;
    CartePage({super.key, required this.items, required this.stream});
 
 
@@ -25,39 +25,12 @@ class _CartePageState extends State<CartePage> {
 
   int _cartBadgeAmount = FireBaseAdmin.shopping_cart.length;
   late bool _showCartBadge;
-  late int num;
-
-
-  List<Product> _listProductShopping = FireBaseAdmin.shopping_cart;
-
-  setMyStat(int index){
-    setState(() {
-      num =index;
-    });
-
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    num=widget.items;
-    widget.stream.asBroadcastStream().listen((index) {
-      setMyStat(index);
-      _shoppingCartBadge();
-    });
-  }
-
 
 
   @override
   Widget build(BuildContext context) {
     _showCartBadge = _cartBadgeAmount > 0;
     CarteItemSimple carteItemSimple=const CarteItemSimple();
-    int num=widget.items;
-
-
-
 
     return DefaultTabController(
       length: 2,
