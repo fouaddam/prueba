@@ -20,10 +20,31 @@ class CarteItemSimple extends StatefulWidget {
   State<CarteItemSimple> createState() => _CarteItemSimpleState();
 }
 
-class _CarteItemSimpleState extends State<CarteItemSimple> {
+class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProviderStateMixin{
+
+  late AnimationController _animationController;
+
+
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void _onPressed() {
+    if (_animationController.isDismissed) {
+      _animationController.forward();
+      print("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+    } else {
+      _animationController.reverse();
+    }
+  }
 
   int _cartAmount=1;
   List<Product>listProduct=[];
+
+  get onPressed => null;
 
 
   @override
@@ -31,6 +52,11 @@ class _CarteItemSimpleState extends State<CarteItemSimple> {
     // TODO: implement initState
     super.initState();
     listProduct=FireBaseAdmin.shopping_cart;
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
 
   }
 
@@ -45,18 +71,27 @@ class _CarteItemSimpleState extends State<CarteItemSimple> {
         child: Stack(
           children: [
             ListView.builder(
-              scrollDirection: Axis.vertical,
+              physics: const ScrollPhysics(),
               shrinkWrap: true,
               itemCount: listProduct.length,//hay que crear una lista de categorias
               itemBuilder: (context,index){
                 return Container(
                   width: MediaQuery.of(context).size.width*0.80,
-                  height: MediaQuery.of(context).size.height*0.12,
+                  height: MediaQuery.of(context).size.height*0.14,
                   margin: const EdgeInsets.only(
                       bottom: 10.0,left: 10.0,right: 10.0
                   ),
                    decoration: BoxDecoration(
-                     color:kBackgournd,
+                     gradient:const LinearGradient(
+                       begin: Alignment.topLeft,
+                       end: Alignment(0.8, 1),
+                       colors: <Color>[
+                         kBackgournd,
+                         kGreyColor,
+                         kWihte
+                       ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                       tileMode: TileMode.mirror,
+                     ),
                      borderRadius: BorderRadius.circular(10),
               ),
 
@@ -75,14 +110,21 @@ class _CarteItemSimpleState extends State<CarteItemSimple> {
                         width: MediaQuery.of(context).size.width/4,
                         margin: const EdgeInsets.only(left: 8),
                         decoration: BoxDecoration(
-                            color: kWihte,
-                            borderRadius: BorderRadius.circular(10)
+                            color: kBackgournd,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset: Offset(0, 3), // changes position of shadow
+                              ),
+                          ],
                         ),
-                        child: CachedNetworkImage(imageUrl: listProduct[index].productUrl,
-                          height: 70,
-                          width: 70,
-                        ),
-
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                              child: CachedNetworkImage(imageUrl : listProduct[index].productUrl,fit: BoxFit.cover,),
+                            ),
                       ),
 
                       SizedBox(
@@ -95,13 +137,12 @@ class _CarteItemSimpleState extends State<CarteItemSimple> {
                             children: [
                               Text(
                                 listProduct[index].productName,
-                                style: const TextStyle(
-                                  color: kRedColor,
-                                  fontSize: 20
-                                ),
+                                style: kTextStyle.copyWith(fontSize: 17)
                               ),
                               Text("${listProduct[index].currentPrice} Euros",
-                                style: kTextStyle.copyWith(color: kWihte,fontSize: 15),)
+                                style: kTextStyle.copyWith(color: kBackgournd
+
+                                    ,fontSize: 15),)
 
                             ],
                           ),
@@ -109,9 +150,9 @@ class _CarteItemSimpleState extends State<CarteItemSimple> {
                       ),
 
                       SizedBox(
-                        width: MediaQuery.of(context).size.width/3.5,
+                        width: MediaQuery.of(context).size.width/3,
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 18,top: 1,bottom: 15),
+                          padding: const EdgeInsets.only(left: 10,top: 1,bottom: 15,right: 8),
                           child: Column(
                             //crossAxisAlignment: CrossAxisAlignment.start,
                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -129,11 +170,57 @@ class _CarteItemSimpleState extends State<CarteItemSimple> {
                           },
                         ),
                               Container(
-                                child: 
+                                height: 40,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  color: kBackgournd,
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 6,
+                                      blurRadius: 7,
+                                      offset: Offset(0, 3), // changes position of shadow
+                                    ),
+                                  ],
+                                ),
+                                child:
                                 Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text("data"),
-                                    Text("data")
+                                    IconButton(
+                                      icon:  const Icon(FontAwesomeIcons.plus,size: 20,color: kWihte,),
+                                      onPressed: () {
+                                        setState(() {
+                                          print("---------------------------$index");
+                                          _cartAmount++;
+                                        });
+                                      },
+                                    ),
+                                    Text(_cartAmount.toString(),style: const TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.white
+                                    ),
+                                    ),
+                                    /*IconButton(
+                                      icon:  const Icon(FontAwesomeIcons.minus,size: 20,color: kWihte,),
+                                      onPressed: () {
+                                        setState(() {
+                                          print("---------------------------$index");
+                                          _cartAmount--;
+                                        });
+                                      },
+                                    ),*/
+                                    IconButton(onPressed: _onPressed, icon: AnimatedIcon(
+                                      icon: AnimatedIcons.view_list,
+                                      progress: _animationController,
+                                      color: Colors.black,
+                                      size: 44,
+                                    ),
+                                    )
+
+
                                   ],
                                 ),
                               )

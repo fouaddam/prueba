@@ -28,7 +28,7 @@ class _CategoryDisplayScreenState extends State<CategoryDisplayScreen> {
             const TopContainer(title: "Category", searchBar: "serche category"),
             ListView.builder(
                 scrollDirection: Axis.vertical,
-                physics: const NeverScrollableScrollPhysics(),
+                physics: const ScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: FireBaseAdmin.categoryList.length,//hay que crear una lista de categorias
                 itemBuilder: (context,index){

@@ -36,7 +36,8 @@ class FireBaseAdmin{
   static final categoryList=[
         Category("Moda casual","240","https://ih1.redbubble.net/image.1618194531.3614/ssrco,classic_tee,womens,fafafa:ca443f4786,front_alt,square_product,600x600.jpg"),
         Category("Moda sport", "120", "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71rbRvh7l9L._AC_UX385_.jpg"),
-        Category("Estilo clásico", "2", "https://i.pinimg.com/originals/cb/7c/48/cb7c486a7602030ef298ddae6ea4efaa.jpg")
+        Category("Estilo clásico", "2", "https://i.pinimg.com/originals/cb/7c/48/cb7c486a7602030ef298ddae6ea4efaa.jpg"),
+        Category("Estilo clásico", "2", "https://i.pinimg.com/originals/cb/7c/48/cb7c486a7602030ef298ddae6ea4efaa.jpg"),
 
   ];
 
