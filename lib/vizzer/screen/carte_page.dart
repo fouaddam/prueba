@@ -21,10 +21,36 @@ class CartePage extends StatefulWidget {
   _CartePageState createState() => _CartePageState();
 }
 
-class _CartePageState extends State<CartePage> {
+class _CartePageState extends State<CartePage>   with SingleTickerProviderStateMixin {
 
+  late AnimationController _animationController;
   int _cartBadgeAmount = FireBaseAdmin.shopping_cart.length;
   late bool _showCartBadge;
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+
+  }
+
+  void _onPressed() {
+    if (_animationController.isDismissed) {
+      _animationController.forward();
+    } else {
+      _animationController.reverse();
+    }
+  }
 
 
   @override
@@ -40,9 +66,12 @@ class _CartePageState extends State<CartePage> {
           backgroundColor: kBackgournd,
           leading: badges.Badge(
             position: badges.BadgePosition.topEnd(top: 10, end: 10),
-            child: IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {},
+            child: IconButton(onPressed: _onPressed, icon: AnimatedIcon(
+              icon: AnimatedIcons.view_list,
+              progress: _animationController,
+              color: Colors.black,
+              size: 44,
+            ),
             ),
           ),
           title:  const Text('My Shopping Cart'),

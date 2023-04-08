@@ -35,7 +35,6 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
   void _onPressed() {
     if (_animationController.isDismissed) {
       _animationController.forward();
-      print("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
     } else {
       _animationController.reverse();
     }
@@ -203,7 +202,7 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
                                       color: Colors.white
                                     ),
                                     ),
-                                    /*IconButton(
+                                    IconButton(
                                       icon:  const Icon(FontAwesomeIcons.minus,size: 20,color: kWihte,),
                                       onPressed: () {
                                         setState(() {
@@ -211,16 +210,14 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
                                           _cartAmount--;
                                         });
                                       },
-                                    ),*/
-                                    IconButton(onPressed: _onPressed, icon: AnimatedIcon(
+                                    ),
+                                   /* IconButton(onPressed: _onPressed, icon: AnimatedIcon(
                                       icon: AnimatedIcons.view_list,
                                       progress: _animationController,
                                       color: Colors.black,
                                       size: 44,
                                     ),
-                                    )
-
-
+                                    ),*/
                                   ],
                                 ),
                               )

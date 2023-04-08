@@ -20,8 +20,8 @@ class TopContainer extends StatelessWidget{
         Row(
           children: [
             Text(title,
-            style: kTextStyle
-              ,),
+            style: kTextStyle.copyWith(fontFamily: "Lobster" ,fontSize: 28),
+              ),
 
             const Spacer(),
             Container(
@@ -30,7 +30,16 @@ class TopContainer extends StatelessWidget{
               alignment: Alignment.center,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.grey,
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment(0.8, 1),
+                  colors: <Color>[
+                    kBackgournd,
+                    kGreyColor,
+                    kWihte
+                  ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                  tileMode: TileMode.mirror,
+                ),
 
               ),
               child: Stack(
