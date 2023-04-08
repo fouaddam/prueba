@@ -6,9 +6,7 @@ import 'package:prubas_home/firebase_admin/firebase_admine.dart';
 import 'package:prubas_home/styles/colors_personalizados.dart';
 import 'package:prubas_home/styles/text_style.dart';
 import 'package:prubas_home/vizzer/screen/payment.dart';
-
 import '../../costum_view/cart_item_simples.dart';
-
 
 
 class CartePage extends StatefulWidget {

@@ -11,6 +11,7 @@ import '../firebase_admin/firebase_admine.dart';
 
 
 StreamController<int> streamController=StreamController<int>.broadcast();
+StreamController<List<Order>> streamController2=StreamController<List<Order>>.broadcast();//lo recibimos en
 
 class CarteItemSimple extends StatefulWidget {
   const CarteItemSimple({Key? key}) : super(key: key);
@@ -157,7 +158,8 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
                             setState(() {
                               listProduct.removeAt(index);
                               //CartePage(items: listProduct.length,stream:streamController.stream ,);
-                              streamController.add(listProduct.length);//Carte
+                              streamController.add(listProduct.length);
+                              streamController2.add(listProduct);//Carte
                               //  streamController.stream.asBroadcastStream().listen(listProduct.length);
                             }
                             );
