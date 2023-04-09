@@ -17,7 +17,6 @@ class CarteItemSimple extends StatefulWidget {
   const CarteItemSimple({Key? key}) : super(key: key);
 
 
-
   @override
   State<CarteItemSimple> createState() => _CarteItemSimpleState();
 }
@@ -42,7 +41,6 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
     }
   }
 
-  int _cartAmount=1;
   List<Order>listProduct=[];
 
   @override
@@ -50,6 +48,7 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
     // TODO: implement initState
     super.initState();
     listProduct=FireBaseAdmin.order_list;
+
 
     _animationController = AnimationController(
       vsync: this,
@@ -136,9 +135,7 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
                               ),
                               Text("${listProduct[index].product.currentPrice} Euros",
                                 style: kTextStyle.copyWith(color: kBackgournd
-
                                     ,fontSize: 15),)
-
                             ],
                           ),
                         ),
@@ -159,7 +156,9 @@ class _CarteItemSimpleState extends State<CarteItemSimple> with SingleTickerProv
                               listProduct.removeAt(index);
                               //CartePage(items: listProduct.length,stream:streamController.stream ,);
                               streamController.add(listProduct.length);
-                              streamController2.add(listProduct);//Carte
+                              streamController2.add(listProduct);
+
+                              //Carte
                               //  streamController.stream.asBroadcastStream().listen(listProduct.length);
                             }
                             );

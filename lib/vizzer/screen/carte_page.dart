@@ -25,6 +25,7 @@ class _CartePageState extends State<CartePage>   with SingleTickerProviderStateM
   late AnimationController _animationController;
   int _cartBadgeAmount = FireBaseAdmin.order_list.length;
   late bool _showCartBadge;
+
   @override
   void dispose() {
     _animationController.dispose();
@@ -35,7 +36,6 @@ class _CartePageState extends State<CartePage>   with SingleTickerProviderStateM
   void initState() {
     // TODO: implement initState
     super.initState();
-
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
@@ -87,7 +87,8 @@ class _CartePageState extends State<CartePage>   with SingleTickerProviderStateM
               carteItemSimple,
             ],
           ),
-          const Payment(),
+           Payment(stream: streamController2.stream,),
+
         ],
         ),
       ),
