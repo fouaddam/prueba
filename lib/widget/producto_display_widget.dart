@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:prubas_home/firebase_admin/firebase_admine.dart';
 import 'package:prubas_home/classes/product.dart';
 import 'package:prubas_home/styles/text_style.dart';
+import 'package:prubas_home/vizzer/product_details.dart';
 import '../classes/order.dart';
 import '../classes/user.dart';
 import '../styles/colors_personalizados.dart';
@@ -48,11 +49,19 @@ class _ProductoDisplayWidgetState extends State<ProductoDisplayWidget> {
         itemCount: widget.gender?FireBaseAdmin.productListW.length:FireBaseAdmin.productListM.length,
         mainAxisSpacing: 5,
         itemBuilder: (context,index){
-          return singleItemWiget(
-              widget.gender?FireBaseAdmin.productListW[index]:FireBaseAdmin.productListM[index],
-              index==FireBaseAdmin.productListW.length -1? true:false,//hay que corrigerlo normalmente aqui ponemos el lenght total
-              context,
 
+          return InkWell(
+            onTap: (){
+              Navigator.push(context,MaterialPageRoute(
+                  builder: (context)=>ProductDetails(
+                      product: widget.gender?FireBaseAdmin.productListW[index]:FireBaseAdmin.productListM[index],)));
+            },
+            child: singleItemWiget(
+                widget.gender?FireBaseAdmin.productListW[index]:FireBaseAdmin.productListM[index],
+                index==FireBaseAdmin.productListW.length -1? true:false,//hay que corrigerlo normalmente aqui ponemos el lenght total
+                context,
+
+            ),
           );
         },
 
@@ -120,11 +129,9 @@ class _ProductoDisplayWidgetState extends State<ProductoDisplayWidget> {
                           decoration: TextDecoration.lineThrough,
                           decorationColor: kRedColor,
                           decorationThickness: 2
-
                         ),
                         ),
                       ],
-
                     ),
                     ),
                   ],

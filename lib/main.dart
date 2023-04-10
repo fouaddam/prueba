@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:prubas_home/vizzer/IntroScreen.dart';
+import 'package:prubas_home/vizzer/home.dart';
+import 'package:prubas_home/vizzer/product_details.dart';
+
 
 
 
